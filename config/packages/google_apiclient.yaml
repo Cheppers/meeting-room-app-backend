@@ -1,0 +1,9 @@
+services:
+    Google_Client:
+        class: Google_Client
+    Google_Service_Directory:
+        class: Google_Service_Directory
+        arguments: ["@=service('google.client').getClient()"]
+    Google_Service_Calendar:
+        class: Google_Service_Calendar
+        arguments: ["@=service('google.client').getClient()"]

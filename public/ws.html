@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/0.12.16/vue.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+
+<script>
+    // TODO: Remove after frontend implementation. Left it for testing.
+    var _io = io.connect('https://meeting-room.s.cheppersdev.com:3000');
+
+    _io.on('connect', function (socket) {
+        console.log('Try to connect...');
+        //_io.emit('authenticate', {token: ''});
+
+        _io.emit('join', 'ws--14869040680');
+        //_io.emit('leave', 'ws-MRApp_TEST0');
+
+        //_io.emit('refresh', '-14869040680');
+    });
+
+    _io.on('authenticated', function () {
+        console.log('Authenticated');
+    });
+
+    _io.on('unauthorized', function (data) {
+        console.log('Unauthorized, error: ' + data.message);
+    });
+
+    _io.on('calendarEvents', function (data) {
+        console.log(new Date());
+        console.log('Msg', data);
+    });
+
+    _io.on('ws-error', function (data) {
+        console.log('Error', data);
+    });
+
+    _io.on('ws-info', function (data) {
+        console.log('Info', data);
+    });
+</script>
+</body>
+</html>

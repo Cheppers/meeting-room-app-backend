@@ -1,0 +1,131 @@
+{
+	"info": {
+		"_postman_id": "30ef732b-cc74-41a0-bb0c-5f3b4cdc351f",
+		"name": "Meeting Room",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "List Resources",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{hostname}}/api/resource",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						"api",
+						"resource"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Events",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{hostname}}/api/event/23596081828",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						"api",
+						"event",
+						"23596081828"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Event",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "summary",
+							"value": "Event Summary",
+							"type": "text"
+						},
+						{
+							"key": "start_time",
+							"value": "2019-09-10 17:00:00",
+							"type": "text"
+						},
+						{
+							"key": "end_time",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "event_length",
+							"value": "25",
+							"description": "in minutes",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{hostname}}/api/event/23596081828",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						"api",
+						"event",
+						"23596081828"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Event",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{hostname}}/api/event/f586mlskhiadm1o0pmvn656ibs_20190910T090000Z",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						"api",
+						"event",
+						"f586mlskhiadm1o0pmvn656ibs_20190910T090000Z"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Refresh events & send to websocket",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{hostname}}/api/event/refresh/-9375089637",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						"api",
+						"event",
+						"refresh",
+						"-9375089637"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

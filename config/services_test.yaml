@@ -1,0 +1,25 @@
+services:
+    google.service.directory.api:
+        alias: App\Tests\Mocks\Google\GoogleServiceDirectory
+
+    google.service.calendar.api:
+        alias: App\Tests\Mocks\Google\GoogleServiceCalendar
+
+    Symfony\Component\Cache\Adapter\FilesystemAdapter:
+        class: Symfony\Component\Cache\Adapter\FilesystemAdapter
+        arguments:
+            - 'test'
+
+    App\Tests\Mocks\:
+        resource: '../tests/Mocks/*'
+
+    App\Utils\Cache\AppCache:
+        class: App\Utils\Cache\AppCache
+        arguments:
+            $cache: '@Symfony\Component\Cache\Adapter\FilesystemAdapter'
+            $logger: '@monolog.logger'
+        calls:
+            - method: clear
+
+    Redis:
+        class: App\Tests\Mocks\Redis
